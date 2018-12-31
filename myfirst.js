@@ -4,11 +4,7 @@ const server = http.createServer((req, res) => {
 res.statusCode = 200;
 res.setHeader('Content-Type', 'text/html');
 res.end('<h1>Hello World</h1>');
-var datetime = new Date();
-res.end(datetime);
 });
 server.listen(port,() => {
 console.log(`Server running at port `+port);
-console.log(datetime);
 });
-
