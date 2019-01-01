@@ -1,12 +1,9 @@
-var http = require('http')
-var app = http()
+var http = require('http');
+var server = http.createServer(function(request, response) {
 
-app.set('port', (process.env.PORT || 5000))
-app.use(http.static(__dirname + '/public'))
-
-app.get('/', function(request, response) {
-  response.send('Hello World!')
-})
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'))
-})
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.end("Hello World!");
+});
+var port = process.env.PORT || 1337;
+server.listen(port);
+console.log("Server running at http://localhost:%d", port);
