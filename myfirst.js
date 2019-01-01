@@ -1,10 +1,12 @@
-const http = require('http');
-const port=process.env.PORT || 3000
-const server = http.createServer((req, res) => {
-res.statusCode = 200;
-res.setHeader('Content-Type', 'text/html');
-res.end('<h1>Hello World</h1>');
-});
-server.listen(port,() => {
-console.log(`Server running at port `+port);
-});
+var http = require('http')
+var app = http()
+
+app.set('port', (process.env.PORT || 5000))
+app.use(http.static(__dirname + '/public'))
+
+app.get('/', function(request, response) {
+  response.send('Hello World!')
+})
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
+})
